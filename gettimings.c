@@ -9,7 +9,8 @@
 volatile sig_atomic_t signal_received = 0;
 
 void emptyFunction(void) {
-    __asm__("");
+    volatile int dummy = 0;
+    dummy = dummy;
 }
 
 void getppidCall(void) {

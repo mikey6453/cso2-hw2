@@ -15,11 +15,15 @@ fi
 
 # Run the program 1000 times
 for i in $(seq 1 $run_count); do
-    # Capture the output of the program
+    # Capture the output of the program, assuming it prints something like "Average time: X ns"
     output=$(./gettimings 1)
     
-    # Add the output to total_time
-    total_time=$((total_time + output))
+    # Extract just the numeric part of the timing from the output
+    # Assuming the numeric timing is followed by "ns" and is the last occurrence of a number in the line
+    time=$(echo $output | grep -o '[0-9]\+' | tail -1)
+    
+    # Add the extracted time to total_time
+    total_time=$((total_time + time))
 done
 
 # Calculate the average
