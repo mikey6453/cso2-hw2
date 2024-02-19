@@ -29,14 +29,12 @@ void measure_operation(void (*operation)()) {
     const int repetitions = 100;
     long long overhead, execution, total_ns = 0;
 
-    // Measure overhead
     clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = 0; i < repetitions; ++i) {
     }
     clock_gettime(CLOCK_MONOTONIC, &end);
     overhead = time_diff(start, end);
 
-    // Measure execution
     clock_gettime(CLOCK_MONOTONIC, &start);
     for (int i = 0; i < repetitions; ++i) {
         operation();
