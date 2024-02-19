@@ -6,10 +6,8 @@
 # include <time.h>
 # include <signal.h>
 
-long long nsecs() {
-    struct timespec t;
-    clock_gettime(CLOCK_MONOTONIC, &t);
-    return t.tv_sec * 1000000000LL + t.tv_nsec;
+long long time_diff(struct timespec start, struct timespec end) {
+    return (end.tv_sec - start.tv_sec) * 1000000000LL + (end.tv_nsec - start.tv_nsec);
 }
 
 
