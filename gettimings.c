@@ -8,15 +8,15 @@
 
 volatile sig_atomic_t signal_received = 0;
 
-void emptyFunction() {
+void emptyFunction(void) {
     __asm__("");
 }
 
-void getppidCall() {
+void getppidCall(void) {
     (void)getppid();
 }
 
-void systemCall() {
+void systemCall(void) {
     system("/bin/true");
 }
 
@@ -24,7 +24,7 @@ long long time_diff(struct timespec start, struct timespec end) {
     return (end.tv_sec - start.tv_sec) * 1000000000LL + (end.tv_nsec - start.tv_nsec);
 }
 
-void measure_operation(void (*operation)()) {
+void measure_operation(void (*operation)(void)) {
     struct timespec start, end;
     const int repetitions = 100;
     long long overhead, execution, total_ns = 0;
@@ -50,14 +50,14 @@ void signalHandler(int sig) {
     signal_received = 1;
 }
 
-void setupSignalHandling() {
+void setupSignalHandling(void) {
     struct sigaction sa;
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = signalHandler;
     sigaction(SIGUSR1, &sa, NULL);
 }
 
-void measureSignal() {
+void measureSignal(void) {
     setupSignalHandling();
     struct timespec start, end;
     long long total_ns;
@@ -99,3 +99,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+
