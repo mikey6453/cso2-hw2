@@ -1,9 +1,22 @@
-Scenario 1: 0 ns
+# Timings Summary
 
-Scenario 2: 145 ns
+This file contains the time estimates for each scenario measured by the program. The measurements are output by the program and 
+have been converted to time estimates for each scenario. The units used for these estimates are nanoseconds (ns). Each scenario 
+was ran 100 times and had their average taken. The overhead was accounted for by measuring the time taken to execute an empty 
+loop and then subtracting this from the time taken to execute the loop that includes the function call. This is done in the 
+measure_ functions.
 
-Scenario 3: 1,919,550 ns
+The overhead was 
 
-Scenario 4: 12,500 ns
 
-Scenario 5:
+## Time Estimates
+
+- Scenario 1: 0 ns
+- Scenario 2: 145 ns
+- Scenario 3: 1,919,550 ns
+- Scenario 4: 15,500 ns
+- Scenario 5: 71,190 ns
+
+## Conversion of Measurements to Time Estimates
+
+The program outputs the measurements in nanoseconds. Therefore, no conversion was necessary to convert the measurements to time estimates.
